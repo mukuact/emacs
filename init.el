@@ -12,51 +12,92 @@
 ;;;Cask (package manager)
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
-(require 'pallet)
-(pallet-mode t)
 (require 'use-package)
+(use-package init-loader
+  :config
+  (setq init-loader-show-log-after-init 'error-only)
+  (init-loader-load  "~/.emacs.d/inits"))
 
-;;;key-binding
+
+
+;; ---------------------------------------------------
+;; global key-bindings
+;; ---------------------------------------------------
+
 ;; C-mにnweline-and-indentを割り当てる。初期値はnewline
 (define-key global-map (kbd "C-m") 'newline-and-indent)
 ;;"C-t"でウィンドウを切り替える。初期値はtranspose-chars
 (define-key global-map (kbd "C-t") 'other-window)
 ;;C-h を　backspace に置き換える
- (keyboard-translate ?\C-h ?\C-?)
+(keyboard-translate ?\C-h ?\C-?)
+(global-set-key "\C-h" nil)
+(global-set-key [f1] 'help-for-help)
 ;; スクロール
 (global-set-key "\M-n" (lambda () (interactive) (scroll-up 1)))
 (global-set-key "\M-p" (lambda () (interactive) (scroll-down 1)))
 
-;;;System configuration
-;;行番号を表示
-(setq inhibit-startup-message t)
-;;初期画面非表示
-(global-linum-mode t)
-;;ツールバー非表示
-(tool-bar-mode -1)
-;;タイトルバーにファイルのフルパスを表示
-(setq frame-title-format "%f")
-;; 背景を透過に設定
-(set-frame-parameter nil 'alpha 95)
-;;リージョンの背景色を変更
-;;(set-face-background 'region "seagreen4")
-(global-hl-line-mode nil)
-;; paren-moden
-(setq show-paren-delay 0);表示までの秒数。初期値は０．１２５
-(show-paren-mode t);有効化
-;;カッコのスタイル：expressionは括弧内も強調表示
-(setq show-paren-style 'expression)
-;;フェイスを変更する
-(load-theme 'misterioso t)
 
-;; backup の保存先
-(setq backup-directory-alist
-  (cons (cons ".*" (expand-file-name "~/.emacs.d/auto-save-list"))
-        backup-directory-alist))
-(setq auto-save-file-name-transforms
-      `((".*", (expand-file-name "~/.emacs.d/auto-save-list/") t)))
+;; ---------------------------------------------------
+;; elisp setting
+;; ---------------------------------------------------
+(use-package pallet
+  :config
+  (pallet-mode t))
 
-;;;elisp setting
 (use-package helm-config
   :bind (("M-x" . helm-M-x)
-	 ("C-:" . helm-for-files))
+	 ("C-:" . helm-for-files)
+         ("M-y" . helm-show-kill-ring)
+         ("C-c i" . helm-imenu)))
+
+
+(use-package helm-gtags
+  :commands helm-gtags-mode
+  :init
+  (add-hook 'c-mode-hook 'helm-gtags-mode)
+  (add-hook 'helm-gtags-mode-hook
+            '(lambda ()
+               (local-set-key (kbd "M-g .") 'helm-gtags-find-tag)
+               (local-set-key (kbd "M-g r") 'helm-gtags-find-rtag)
+               (local-set-key (kbd "M-g s") 'helm-gtags-find-symbol)
+               (local-set-key (kbd "<M-left>") 'helm-gtags-pop-stack))))
+
+(use-package undo-hist
+  :config
+  (undohist-initialize))
+
+(use-package undo-tree
+  :bind (("C-/" . undo-tree-undo)
+	 ("C-?" . undo-tree-redo)))
+
+(use-package elscreen
+  :config
+  (elscreen-start)
+  (setq elscreen-display-tab nil))
+
+(use-package auto-complete-config
+  :bind
+    ("C-n" . ac-next)
+    ("C-p" . ac-previous)
+  :config
+  (ac-config-default)
+  (global-auto-complete-mode t))
+
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+(use-package iedit)
+
+(use-package expand-region
+  :bind ("C-@" . er/expand-region))
+
+(use-package ace-isearch
+  :config
+  (global-ace-isearch-mode +1)
+  (custom-set-variables
+   '(ace-isearch-jump-delay 0.5)))
+
+;;;elpy.el
+(elpy-enable)
+
