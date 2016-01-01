@@ -11,9 +11,10 @@
 (add-hook 'ruby-mode-hook 'helm-gtags-mode)
 
 
-(require 'rbenv)
-(global-rbenv-mode)
-(setq rbenv-installation-dir "/Users/takeda/.rbenv/" )
+(use-package rbenv
+  :config
+  (global-rbenv-mode)
+  (setq rbenv-installation-dir "/Users/takeda/.rbenv/" ))
 ;; --------------------------------------------------
 ;; ruby-mode
 ;; http://shibayu36.hatenablog.com/entry/2013/03/18/192651
@@ -47,8 +48,7 @@
 ;; endや括弧などを自動挿入する
 ;; http://blog.livedoor.jp/ooboofo3/archives/53748087.html
 ;; --------------------------------------------------
-(require 'ruby-end)
-
+(use-package ruby-end)
 
 ;; inf-ruby
 (autoload 'inf-ruby "inf-ruby" "Run an inferior Ruby process" t)
@@ -68,17 +68,18 @@
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 (custom-set-variables '(robe-completing-read-func 'helm-robe-completing-read))
 
-;;rcodetools (xmp)
-(require 'rcodetools)
-(define-key ruby-mode-map (kbd "C-c x") 'xmp)
+(use-package rcodetools
+  :config
+  (bind-keys :map ruby-mode-map
+             ("C-c x" . xmp)))
 
-;;quickrun
-(require 'quickrun)
-(custom-set-variables
- '(helm-mini-default-sources '(helm-source-buffers-list
-                   helm-source-recentf
-                   helm-source-buffer-not-found
-                   helm-quickrun-source)))
+(use-package quickrun
+  :config
+  (custom-set-variables
+   '(helm-mini-default-sources '(helm-source-buffers-list
+                                 helm-(setq )ource-recentf
+                                 helm-source-buffer-not-found
+                                 helm-quickrun-source))))
 
 ;;;mmm-mode
 (require 'web-mode)
@@ -109,14 +110,7 @@
 ;;      (add-to-list 'auto-mode-alist '("\\.html\\.erb$" . eruby-nxhtml-mumamo-mode))
 
 ;;;projectile-rails
-(require 'projectile)
-(add-hook 'ruby-mode-hook 'projectile-mode)
-(add-hook 'ruby-mode-hook 'projectile-rails-on)
-(setq projectile-switch-project-action 'projectile-dired)
-(require 'helm-projectile)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(setq projectile-rails-expand-snippet nil)
+
 
 (provide '30_ruby)
 ;;; 30_ruby.el ends here

@@ -76,10 +76,10 @@
   (setq elscreen-display-tab nil))
 
 (use-package auto-complete-config
-  :bind
-    ("C-n" . ac-next)
-    ("C-p" . ac-previous)
   :config
+  (bind-keys :map ac-completing-map
+             ("C-n" . ac-next)
+             ("C-p" . ac-previous))
   (ac-config-default)
   (global-auto-complete-mode t))
 
@@ -99,5 +99,22 @@
    '(ace-isearch-jump-delay 0.5)))
 
 ;;;elpy.el
-(elpy-enable)
+(use-package elpy
+  :config
+  (elpy-enable))
+
+(use-package projectile
+  :commands (projectile-mode projectile-rails-on)
+  :init
+  (add-hook 'ruby-mode-hook 'projectile-mode)
+  (add-hook 'ruby-mode-hook 'projectile-rails-on)  
+  :config
+  (setq projectile-switch-project-action 'projectile-dired))
+
+(use-package helm-projectile
+  :config
+  (setq projectile-completion-system 'helm)
+  (helm-projectile-on)
+  (setq projectile-rails-expand-snippet nil))
+
 
