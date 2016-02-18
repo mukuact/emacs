@@ -27,5 +27,5 @@
 (push '("*Completions*") popwin:special-display-config)
 
 ;; HELM
-(push '("^\*helm .+\*$" :width 80 :regexp t :position right) popwin:special-display-config)
+(push '("^\*helm .+\*$" :width 70 :regexp t :position right) popwin:special-display-config)
 

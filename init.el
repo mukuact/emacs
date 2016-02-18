@@ -44,11 +44,23 @@
   :config
   (pallet-mode t))
 
-(use-package helm-config
+(use-package helm
+  :init
+  (require 'helm-config)
   :bind (("M-x" . helm-M-x)
 	 ("C-:" . helm-for-files)
          ("M-y" . helm-show-kill-ring)
-         ("C-c i" . helm-imenu)))
+         ("C-x C-f" . helm-find-files)
+         ("C-x C-d" .  helm-browse-project))
+  :config
+  (bind-keys :map helm-map
+             ("<tab>" . helm-execute-persistent-action)
+             ("C-i" . helm-execute-persistent-action)
+             ("C-z" . helm-select-action))
+  (setq helm-buffers-fuzzy-matching t)
+  (setq helm-recentf-fuzzy-match t)
+  (setq helm-M-x-fuzzy-match t))
+  
 
 
 (use-package helm-gtags
@@ -76,12 +88,14 @@
   (setq elscreen-display-tab nil))
 
 (use-package auto-complete-config
+  :commands global-auto-complete-mode
+  :init
+  (global-auto-complete-mode t)
   :config
   (bind-keys :map ac-completing-map
              ("C-n" . ac-next)
              ("C-p" . ac-previous))
-  (ac-config-default)
-  (global-auto-complete-mode t))
+  (ac-config-default))
 
 (use-package yasnippet
   :config
@@ -100,6 +114,7 @@
 
 ;;;elpy.el
 (use-package elpy
+  :defer t
   :config
   (elpy-enable))
 
@@ -112,6 +127,7 @@
   (setq projectile-switch-project-action 'projectile-dired))
 
 (use-package helm-projectile
+  :defer t
   :config
   (setq projectile-completion-system 'helm)
   (helm-projectile-on)

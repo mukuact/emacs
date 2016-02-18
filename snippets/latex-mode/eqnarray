@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: eqnarray
+# key: eqn
+# --
+\begin{eqnarray}
+$0
+\end{eqnarray}

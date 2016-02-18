@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: commentRed
+# key: comr
+# --
+\textcolor{red}{$1} $0

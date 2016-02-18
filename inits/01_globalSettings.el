@@ -1,7 +1,8 @@
 ;; ---------------------------------------------------
 ;; System configuration
 ;; ---------------------------------------------------
-
+;;beep音抑制
+(setq ring-bell-function 'ignore)
 ;;行番号を表示
 (setq inhibit-startup-message t)
 ;;初期画面非表示
@@ -46,6 +47,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(magit-section-highlight ((t (:background "keyboardFocusIndicatorColor")))))
+;;;default package
+(electric-pair-mode)
 
 
 

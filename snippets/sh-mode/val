@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: val
+# key: val
+# --
+\${$1}$0

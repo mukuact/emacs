@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: test
+# key: hoge
+# --
+nikkonikko ${1:hoge},${2:piyo} test $1 '$2

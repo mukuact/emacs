@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: vector
+# key:bm
+# --
+$\bm{$1}$$0

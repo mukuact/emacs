@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: superscript_with_paren
+# key: up
+# --
+^{($1)}$0
