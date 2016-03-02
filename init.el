@@ -114,7 +114,6 @@
 
 ;;;elpy.el
 (use-package elpy
-  :defer t
   :config
   (elpy-enable))
 
