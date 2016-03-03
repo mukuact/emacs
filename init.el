@@ -99,7 +99,10 @@
 
 (use-package yasnippet
   :config
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  (setq yas-snippet-dirs
+      '("/Users/takeda/.emacs.d/snippets" ;; 作成するスニペットはここに入る
+        )))
 
 (use-package iedit)
 
