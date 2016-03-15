@@ -57,6 +57,7 @@
              ("<tab>" . helm-execute-persistent-action)
              ("C-i" . helm-execute-persistent-action)
              ("C-z" . helm-select-action))
+  (helm-migemo-mode 1)
   (setq helm-buffers-fuzzy-matching t)
   (setq helm-recentf-fuzzy-match t)
   (setq helm-M-x-fuzzy-match t))
@@ -108,6 +109,19 @@
 
 (use-package expand-region
   :bind ("C-@" . er/expand-region))
+
+(use-package migemo
+  :config
+  (setq migemo-command "/usr/local/bin/cmigemo")
+  ;; Set your installed path
+  (setq migemo-options '("-q" "--emacs"))
+  (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+        
+  (setq migemo-user-dictionary nil)
+  (setq migemo-regex-dictionary nil)
+  (setq migemo-coding-system 'utf-8-unix)
+  (load-library "migemo")
+  (migemo-init))
 
 (use-package ace-isearch
   :config
