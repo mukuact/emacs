@@ -23,7 +23,7 @@
 (setq show-paren-style 'expression)
 ;;フェイスを変更する
 (load-theme 'tango-dark t)
-(set-cursor-color 'red)
+;(set-cursor-color 'red)
 ;; カーソル上の関数名を表示する
 (which-func-mode t)
 ;; 行番号の表示
