@@ -153,4 +153,9 @@
   (helm-projectile-on)
   (setq projectile-rails-expand-snippet nil))
 
+(use-package magit
+  :defer t
+  :config
+  (set-face-background 'magit-section-highlight "DeepSkyBlue") 
+  )
 
