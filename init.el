@@ -159,3 +159,22 @@
   (set-face-background 'magit-section-highlight "DeepSkyBlue") 
   )
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ace-isearch-jump-delay 0.5)
+ '(flymake-gui-warnings-enabled nil)
+ '(helm-mini-default-sources
+   (quote
+    (helm-source-buffers-list helm-
+                              (setq)
+                              ource-recentf helm-source-buffer-not-found helm-quickrun-source)))
+ '(robe-completing-read-func (quote helm-robe-completing-read)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(magit-section-highlight ((t (:background "keyboardFocusIndicatorColor")))))
