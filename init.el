@@ -102,8 +102,8 @@
   :config
   (yas-global-mode 1)
   (setq yas-snippet-dirs
-      '("/Users/takeda/.emacs.d/snippets" ;; 作成するスニペットはここに入る
-        )))
+        (concat user-emacs-directory "snippets") ;;作成するスニペットはここに入る
+        ))
 
 (use-package iedit)
 
@@ -155,8 +155,8 @@
 
 (use-package magit
   :defer t
-  :config
-  (set-face-background 'magit-section-highlight "DeepSkyBlue") 
+ ;; :config
+ ;; (set-face-background 'magit-section-highlight "DeepSkyBlue") 
   )
 
 (custom-set-variables
@@ -172,9 +172,12 @@
                               (setq)
                               ource-recentf helm-source-buffer-not-found helm-quickrun-source)))
  '(robe-completing-read-func (quote helm-robe-completing-read)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(highlight ((t (:background "black" :distant-foreground "white"))))
  '(magit-section-highlight ((t (:background "keyboardFocusIndicatorColor")))))
+(set-face-foreground 'highlight nil)

@@ -15,12 +15,12 @@
 (set-frame-parameter nil 'alpha 95)
 ;;リージョンの背景色を変更
 ;;(set-face-background 'region "seagreen4")
-(global-hl-line-mode nil)
+(global-hl-line-mode t)
 ;; paren-moden
 ;;(setq show-paren-delay 0);表示までの秒数。初期値は０．１２５
 (show-paren-mode t);;有効化
 ;;カッコのスタイル：expressionは括弧内も強調表示
-(setq show-paren-style 'expression)
+(setq show-paren-style 'mixed)
 ;;フェイスを変更する
 (load-theme 'tango-dark t)
 (set-cursor-color "red")
@@ -40,13 +40,6 @@
 ;;;region
 ;: バッファ切り替え時にリージョンを保持
 (setq highlight-nonselected-windows t)
-;;magit color-setting
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(magit-section-highlight ((t (:background "keyboardFocusIndicatorColor")))))
 ;;;default package
 (electric-pair-mode)
 

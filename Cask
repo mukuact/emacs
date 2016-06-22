@@ -15,6 +15,7 @@
 (depends-on "dash")
 (depends-on "diminish")
 (depends-on "drag-stuff")
+(depends-on "ein")
 (depends-on "elpy")
 (depends-on "elscreen")
 (depends-on "epl")
