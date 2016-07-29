@@ -42,7 +42,8 @@
 (setq highlight-nonselected-windows t)
 ;;;default package
 (electric-pair-mode)
-
+;;;font
+(set-fontset-font t 'japanese-jisx0208 (font-spec :family "Migu 1C"))
 
 
 ;; backup の保存先

@@ -49,6 +49,7 @@
   (require 'helm-config)
   :bind (("M-x" . helm-M-x)
 	 ("C-:" . helm-for-files)
+         ("C-x C-b " . helm-for-files)
          ("M-y" . helm-show-kill-ring)
          ("C-x C-f" . helm-find-files)
          ("C-x C-d" .  helm-browse-project))
