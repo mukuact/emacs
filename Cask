@@ -39,6 +39,7 @@
 (depends-on "iedit")
 (depends-on "inf-ruby")
 (depends-on "init-loader")
+(depends-on "jedi")
 (depends-on "let-alist")
 (depends-on "magit")
 (depends-on "magit-popup")

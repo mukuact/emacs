@@ -40,6 +40,8 @@
 ;; ---------------------------------------------------
 ;; elisp setting
 ;; ---------------------------------------------------
+(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+
 (use-package pallet
   :config
   (pallet-mode t))
