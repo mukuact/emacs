@@ -60,6 +60,7 @@
              ("<tab>" . helm-execute-persistent-action)
              ("C-i" . helm-execute-persistent-action)
              ("C-z" . helm-select-action))
+  (helm-mode 1)
   (helm-migemo-mode 1)
   (setq helm-buffers-fuzzy-matching t)
   (setq helm-recentf-fuzzy-match t)
